@@ -1,0 +1,78 @@
+{
+  // ---------------------------------------------------------------------
+  // Toolchain locations.
+  // VS Code is installed as a Flatpak, so it does NOT inherit the PATH from
+  // ~/.bashrc. Without these explicit paths the Go extension reports
+  // "go: command not found" even though Go works fine in your own terminal.
+  // ---------------------------------------------------------------------
+  "go.goroot": "/home/shrmishr/.local/go",
+  "go.gopath": "/home/shrmishr/go",
+  "go.alternateTools": {
+    "gopls": "/home/shrmishr/go/bin/gopls",
+    "dlv": "/home/shrmishr/go/bin/dlv"
+  },
+  "terminal.integrated.env.linux": {
+    "PATH": "/home/shrmishr/.local/go/bin:/home/shrmishr/go/bin:${env:PATH}"
+  },
+
+  // ---------------------------------------------------------------------
+  // Language server
+  // ---------------------------------------------------------------------
+  "go.useLanguageServer": true,
+  "go.toolsManagement.autoUpdate": true,
+  "gopls": {
+    // staticcheck finds real bugs that `go vet` misses. Worth the noise.
+    "staticcheck": true,
+    "ui.semanticTokens": true,
+
+    // Inlay hints are the single most useful learning aid here: they show the
+    // types Go inferred for every `:=`, the names of parameters at call
+    // sites, and the types in composite literals. You get the readability of
+    // an explicitly typed language while writing idiomatic terse Go.
+    // Turn these off once they start feeling like clutter — that's the signal
+    // you've internalized the type system.
+    "ui.inlayhint.hints": {
+      "assignVariableTypes": true,
+      "compositeLiteralFields": true,
+      "compositeLiteralTypes": true,
+      "constantValues": true,
+      "functionTypeParameters": true,
+      "parameterNames": true,
+      "rangeVariableTypes": true
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Editor behaviour for Go files
+  // ---------------------------------------------------------------------
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      // Adds missing imports and drops unused ones on every save. Go treats
+      // an unused import as a compile error, so this saves real friction.
+      "source.organizeImports": "explicit"
+    },
+    "editor.inlayHints.enabled": "on",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+
+    // Go is tab-indented by definition — gofmt rewrites spaces to tabs, so
+    // don't fight it.
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
+  },
+
+  // ---------------------------------------------------------------------
+  // Testing
+  // ---------------------------------------------------------------------
+  "go.testFlags": ["-v"],
+  "go.testTimeout": "60s",
+  // Shades covered/uncovered lines in the gutter after a test run. Useful for
+  // Day 6 when you start thinking about what your tests actually exercise.
+  "go.coverOnSingleTest": true,
+  "go.coverageDecorator": {
+    "type": "gutter"
+  },
+
+  "files.eol": "\n"
+}

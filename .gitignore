@@ -1,0 +1,29 @@
+# Compiled binaries.
+# `go build` with no -o drops a binary named after the directory, with no
+# extension — which makes them easy to commit by accident. The repo already
+# had a 2.3 MB `project1` binary in it before this file existed.
+/project1
+*.exe
+*.test
+*.out
+
+# Any extensionless executable at the repo root. Uncomment if more sneak in.
+# /go-learning
+
+# Go workspace file — machine-specific, should not be shared.
+go.work
+go.work.sum
+
+# Coverage and profiling output
+*.prof
+coverage.txt
+coverage.html
+
+# Dependency directory (only if you ever vendor)
+/vendor/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+*~
+.*.swp

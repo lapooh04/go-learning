@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Debug whichever main package you have open. Set a breakpoint in the
+      // gutter and hit F5. Stepping through a running program is the fastest
+      // way to build intuition for pointers and value semantics on Day 2.
+      "name": "Debug current package",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${fileDirname}"
+    },
+    {
+      "name": "Debug gowc (Day 1 project)",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/day01/cmd/gowc",
+      "args": ["-l", "-w", "${workspaceFolder}/README.md"]
+    },
+    {
+      // Put the cursor inside a test function and launch this to debug just
+      // that one test.
+      "name": "Debug test at cursor",
+      "type": "go",
+      "request": "launch",
+      "mode": "test",
+      "program": "${fileDirname}",
+      "args": ["-test.run", "${selectedText}"]
+    }
+  ]
+}
