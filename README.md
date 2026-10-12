@@ -34,6 +34,7 @@ day07/
 | `day05-mini-projects/miniproj3.go` | CLI typing test — random prompt, measures WPM and accuracy | `bufio` on stdin, `math/rand`, `time`, `strings` |
 | `day06/miniproj4.go` | URL shortener backend — POST a long URL, get a short code, follow the redirect | HTTP handlers, JSON decoding, maps as an in-memory store, HTTP redirects |
 | `day06/frontend/` | Static file server + HTML page for the shortener | `http.FileServer`, serving static assets |
+| `day07/miniproj5.go` | CodeClock CLI - Measures the time spent on a task, saves session data in JSON format.
 
 ## Running things
 
@@ -48,7 +49,7 @@ go run day05-mini-projects/miniproj3.go
 `go build ./...` across the whole repo will **not** work, and that's expected —
 several directories contain multiple `main()` functions, which Go does not
 allow in one package. This is a notebook, not an application.
-
+whi
 The URL shortener needs two terminals:
 
 ```bash
